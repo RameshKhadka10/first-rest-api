@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/first-rest-api.jar /app/first-rest-api.jar
 
 # Expose the port that the application will run on
-EXPOSE 8080
+EXPOSE 8000
 
 # Define the command to run your application
 CMD ["java", "-jar", "first-rest-api.jar"]
