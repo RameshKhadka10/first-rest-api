@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-api-new
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-api-new
+  template:
+    metadata:
+      labels:
+        app: rest-api-new
+    spec:
+      containers:
+        - name: rest-api
+          image: rameshkhadka/first-rest-api:latest
+          ports:
+            - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-api-svc
+spec:
+  selector:
+    app: rest-api-new
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: NodePort
